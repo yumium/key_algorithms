@@ -1,0 +1,1 @@
+A collection of key data structures and algorithms common in entry-level coding interviews.
