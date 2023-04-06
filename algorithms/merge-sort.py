@@ -21,7 +21,7 @@ def merge(arr, i, j, k):
 
     ai, bi, aEnd, bEnd = 0, 0, j-i, k-j
     # Invariant: arr[i0..i) is sorted perm. of arr[i0..k)
-    while i < k and ai < aEnd:      
+    while ai < aEnd:    # Because ai < aEnd also implies i < k 
         if bi == bEnd or a[ai] <= b[bi]:
             arr[i] = a[ai]
             ai += 1
