@@ -13,16 +13,17 @@ class MaxHeap:
             self._max_heapify(i)
 
     def maximum(self):
-        assert self.heap is not None
+        assert self.heap is not None and len(self.heap) > 0
 
         return self.heap[0]
 
     def extract_max(self):
-        assert self.heap is not None
+        assert self.heap is not None and len(self.heap) > 0
         
         self.heap[0], self.heap[-1] = self.heap[-1], self.heap[0]
         out = self.heap.pop()
-        self._max_heapify(0)
+        if len(self.heap) > 0:
+            self._max_heapify(0)
         return out
 
     def insert(self, elem):

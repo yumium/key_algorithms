@@ -5,9 +5,6 @@ class BinaryTree:
         self.right = right
 
 class BST:
-    def __init__(self):
-        pass
-
     @classmethod
     def search(cls, val, root):
         while root and root.val != val:
