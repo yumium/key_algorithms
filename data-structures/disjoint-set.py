@@ -134,9 +134,8 @@ class DisjointSetForestOpt(DisjointSet):
             return x
         else:
             # Path compression
-            res = self.find_set(self.p[x])
-            self.p[x] = res
-            return res
+            self.p[x] = self.find_set(self.p[x])
+            return self.p[x]
 
     def union(self, x, y):
         x_p = self.find_set(x)
