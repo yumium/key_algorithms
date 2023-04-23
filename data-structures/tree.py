@@ -1,7 +1,7 @@
 class Node:
     def __init__(self, name="root", child=None):
         self.name = name
-        self.child = child
+        self.child = child if child is not None else []
 
     def addChild(self, c):
         self.child.append(c)
@@ -45,8 +45,7 @@ class NAryTree:
         while len(stack) > 0:
             v = stack.pop()
             res.append(v.name)
-            if v.child is not None:
-                stack.extend(v.child[::-1])
+            stack.extend(v.child[::-1])
         
         return res
 
@@ -59,8 +58,7 @@ class NAryTree:
         while len(stack) > 0:
             v = stack.pop()
             res.append(v.name)
-            if v.child is not None:
-                stack.extend(v.child)
+            stack.extend(v.child)
 
         return res[::-1]
 
@@ -72,10 +70,10 @@ class NAryTree:
         curLvl = [tree]
         while len(curLvl) > 0:
             res.extend([t.name for t in curLvl])
-            curLvl = [c for t in curLvl if t.child is not None for c in t.child]
+            curLvl = [c for t in curLvl for c in t.child]
         
         return res
-    
+
 if __name__ == '__main__':
     print(f'Preorder: {NAryTree.preOrder2(myTree)}')
     print(f'Postorder: {NAryTree.postOrder(myTree)}')

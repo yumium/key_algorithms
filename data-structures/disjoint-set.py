@@ -69,10 +69,9 @@ class LinkedListDisjointSet(DisjointSet):
         x_set.tail = y_set.tail
         
         node = y_set.head
-        node.set = x_set
-        while node.next is not None:
-            node = node.next
+        while node is not None:
             node.set = x_set
+            node = node.next
 
         x_set.length += y_set.length
 
@@ -130,12 +129,9 @@ class DisjointSetForestOpt(DisjointSet):
     
     def find_set(self, x):
         assert 0 <= x <= self.MAX_VAL
-        if self.p[x] == x:
-            return x
-        else:
-            # Path compression
+        if self.p[x] != x:
             self.p[x] = self.find_set(self.p[x])
-            return self.p[x]
+        return self.p[x]
 
     def union(self, x, y):
         x_p = self.find_set(x)
