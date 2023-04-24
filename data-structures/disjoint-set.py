@@ -130,6 +130,7 @@ class DisjointSetForestOpt(DisjointSet):
     def find_set(self, x):
         assert 0 <= x <= self.MAX_VAL
         if self.p[x] != x:
+            # Path compression
             self.p[x] = self.find_set(self.p[x])
         return self.p[x]
 

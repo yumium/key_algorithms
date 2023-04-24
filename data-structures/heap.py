@@ -31,9 +31,8 @@ class MaxHeap:
             self.heap = [elem]
         else:
             self.heap.append(elem)
-            i = len(self.heap)-1
             # Bubble up
-            self._bubble_up(i)
+            self._bubble_up(len(self.heap)-1)
 
     def remove(self, elem): 
         assert self.heap is not None
@@ -52,16 +51,16 @@ class MaxHeap:
             return False
         elif i == size-1:
             self.heap.pop()
-            return True
         else:
             # Swap the element to delete with the last element in the heap
             self.heap[i] = self.heap.pop()
             if self.heap[i] > elem:
                 # Bubble up
-                i = self._bubble_up(i)
+                self._bubble_up(i)
             elif self.heap[i] < elem:
                 self._maxHeapify(i)
-            return True
+
+        return True
 
     def increase_val(self, old_val, new_val):
         '''
@@ -103,5 +102,3 @@ class MaxHeap:
         if iMax != i:
             a[i], a[iMax] = a[iMax], a[i]
             self._max_heapify(iMax)
-    
-
