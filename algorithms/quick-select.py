@@ -13,9 +13,9 @@ def quickselect3(arr, i, j, k):
 
     p, q = partition3(arr, i, j)
 
-    if p <= i+k-1 < q:
+    if p-i < k <= q-i:
         return arr[p]
-    elif p > i+k-1:
+    elif k <= p-i:
         return quickselect3(arr, i, p, k)
     else:
         return quickselect3(arr, q, j, k-(q-i))
