@@ -14,7 +14,4 @@ def find(val, lis):
         else:
             j = m
 
-    if i == len(lis) or lis[i] != val:
-        return -1
-    else:
-        return i
+    return i if i < len(lis) and lis[i] == val else -1
