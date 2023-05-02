@@ -25,6 +25,13 @@ class TreeNode:
             if n.right:
                 q.insert(0, n.right)
 
+'''
+    stack curNode             loop
+0  [None]    root          curNode
+1      []    root  curNode + stack
+2      []    root  curNode + stack
+'''
+
     @classmethod
     def preOrderIter(cls, root):
         stack = [None]  #
