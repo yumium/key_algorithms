@@ -58,7 +58,7 @@ class MaxHeap:
                 # Bubble up
                 self._bubble_up(i)
             elif self.heap[i] < elem:
-                self._maxHeapify(i)
+                self._max_heapify(i)
 
         return True
 
