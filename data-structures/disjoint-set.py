@@ -44,9 +44,9 @@ class LinkedListDisjointSet(DisjointSet):
     def make_set(self, x):
         assert 0 <= x <= self.MAX_VAL
         elem = self._Element(None, x, None)
-        elem.set = self._DisjointSet(elem, elem)
+        elem.set = self._DisjointSet(elem, elem) 
         self.pointer[x] = elem
-
+        
     def find_set(self, x):
         assert 0 <= x <= self.MAX_VAL
         return self.pointer[x].set.head.val
@@ -90,13 +90,12 @@ class LinkedListDisjointSet(DisjointSet):
 class DisjoinSetForest(DisjointSet):
     def __init__(self, MAX_VAL=100):
         self.p = [None]*(MAX_VAL+1)  # Parent pointer
-        self.h = [None]*(MAX_VAL+1)  # Height of tree rooted at this index
+        self.h = [1]*(MAX_VAL+1)  # Height of tree rooted at this index
         self.MAX_VAL = MAX_VAL
     
     def make_set(self, x):
         assert 0 <= x <= self.MAX_VAL
         self.p[x] = x
-        self.h[x] = 1
     
     def find_set(self, x):
         assert 0 <= x <= self.MAX_VAL
@@ -119,13 +118,12 @@ class DisjoinSetForest(DisjointSet):
 class DisjointSetForestOpt(DisjointSet):
     def __init__(self, MAX_VAL=100):
         self.p = [None]*(MAX_VAL+1)  # Parent pointer
-        self.r = [None]*(MAX_VAL+1)  # Rank of tree rooted at this index
+        self.r = [1]*(MAX_VAL+1)  # Rank of tree rooted at this index
         self.MAX_VAL = MAX_VAL
     
     def make_set(self, x):
         assert 0 <= x <= self.MAX_VAL
         self.p[x] = x
-        self.r[x] = 1
     
     def find_set(self, x):
         assert 0 <= x <= self.MAX_VAL
@@ -145,7 +143,7 @@ class DisjointSetForestOpt(DisjointSet):
         else:
             self.p[y_p] = x_p
             self.r[x_p] += 1
-    
+
 
 
 def test_ds(ds_class):
