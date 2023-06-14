@@ -10,7 +10,7 @@ def partition(lis, l, r):
 
     val = lis[l]
     i, j = l+1, r
-    # Invariant: [l+1..i) < val; [j..r) >= val; l+1 <= i <= j <= r
+    # Invariant: lis[l+1..i) < val; lis[j..r) >= val; l+1 <= i <= j <= r
     # Variant: j-i
     while i < j:
         if lis[i] < val:

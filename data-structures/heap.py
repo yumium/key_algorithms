@@ -1,10 +1,12 @@
 class MaxHeap:
     def __init__(self, arr=None):
         self.heap = arr
+        if self.heap is not None:
+            self.make_max_heap(self.heap)
 
     def make_max_heap(self, arr):
         '''
-        Create a max heap from an array `arr`
+        Create a max heap from an array `arr` and store internally
         This operation is O(N)
         '''
 
