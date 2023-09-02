@@ -3,12 +3,11 @@ def mergesort(arr, i, j):
     Sorts arr[i..j)
     Pre: 0 <= i <= j <= len(arr)
     '''
-    if j - i < 2: return
-
-    i, j, k = i, (i+j)//2, j
-    mergesort(arr, i, j)
-    mergesort(arr, j, k)
-    merge(arr, i, j, k)
+    if j - i >= 2:
+        i, j, k = i, (i+j)//2, j
+        mergesort(arr, i, j)
+        mergesort(arr, j, k)
+        merge(arr, i, j, k)
 
     
 def merge(arr, i, j, k):
