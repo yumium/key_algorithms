@@ -20,12 +20,10 @@ def qsort_insitu(arr, i, j):
     '''
     Sorts arr[i..j) in-place
     '''
-    if j-i < 2:
-        return
-
-    l, r = partition3(arr, i, j)  # lis[i..l) < pivot; lis[r..j) > pivot
-    qsort_insitu(arr, i, l)
-    qsort_insitu(arr, r, j)
+    if j-i >= 2:
+        l, r = partition3(arr, i, j)  # lis[i..l) < pivot; lis[r..j) > pivot
+        qsort_insitu(arr, i, l)
+        qsort_insitu(arr, r, j)
     
 
 def qsort_tail(arr, i, j):
