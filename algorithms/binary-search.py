@@ -6,7 +6,7 @@ def find(val, lis):
     '''
 
     # Invariant: lis[0..i) < val; lis[j..N) >= val; 0 <= i <= j <= N
-    i, j = 0, len(val)
+    i, j = 0, len(lis)
     while i < j:
         m = (i+j) // 2
         if lis[m] < val:
