@@ -1,4 +1,4 @@
-from partition import partition, partition3
+from partition import partition3
 
 def qsort_naive(arr):
     '''

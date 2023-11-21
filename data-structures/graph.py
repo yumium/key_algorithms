@@ -6,7 +6,7 @@ class Graph:
     def dfs(cls, graph,s):
         seen = set()
         cls.visit(graph,s,seen)
-        for node in graph.keys():
+        for node in graph:
             if node not in seen:
                 cls.visit(graph,node,seen)
 

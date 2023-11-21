@@ -57,11 +57,11 @@ class LinkedListDisjointSet(DisjointSet):
     
         # Append shorter list onto longer list
         if x_length >= y_length:
-            self._union(x, y)
+            self._join(x, y)
         else:
-            self._union(y, x)
+            self._join(y, x)
 
-    def _union(self, x, y):
+    def _join(self, x, y):
         # append y to x
         x_set = self.pointer[x].set
         y_set = self.pointer[y].set
