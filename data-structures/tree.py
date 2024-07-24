@@ -32,14 +32,11 @@ class NAryTree:
     @classmethod
     def preOrder(cls, tree):
         print(tree.name)
-        if tree.child:
-            for child in tree.child:
-                cls.preOrder(child)
+        for child in tree.child:
+            cls.preOrder(child)
 
     @classmethod
     def preOrder2(cls, tree):
-        assert tree is not None
-
         res = []
         stack = [tree]
         while len(stack) > 0:
@@ -51,8 +48,6 @@ class NAryTree:
 
     @classmethod
     def postOrder(cls, tree):
-        assert tree is not None
-
         res = []
         stack = [tree]
         while len(stack) > 0:
@@ -64,14 +59,13 @@ class NAryTree:
 
     @classmethod
     def levelOrder(cls, tree):
-        assert tree is not None
-
         res = []
-        curLvl = [tree]
-        while len(curLvl) > 0:
-            res.extend([t.name for t in curLvl])
-            curLvl = [c for t in curLvl for c in t.child]
-        
+        q = [tree]
+        while len(q) > 0:
+            node = q.pop(0)        
+            res.append(node.name)
+            q.extend(node.child)
+
         return res
 
 if __name__ == '__main__':
