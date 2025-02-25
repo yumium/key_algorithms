@@ -11,26 +11,29 @@ struct Node {
 
 class LinkedList {
 public:
-    void insert(int val, size_t pos) {
-        Node* cur = _head.get(); 
-        /* Invariant: cur is 1 node before node[pos0-pos] */
-        while (pos > 0 && cur->next) {
-            cur = cur->next.get();
+    bool insert(int val, size_t pos) {
+        std::unique_ptr<Node>* cur = &_head;
+        while (pos > 0 && (*cur)->next) {
+            cur = &((*cur)->next);
             pos--;
         }
-        cur->next = std::make_unique<Node>(val, std::move(cur->next)); // need to use std::move here as unique_ptr does not have copy constructor
+
+        if (pos > 0) return false;
+        (*cur)->next = std::make_unique<Node>(val, std::move((*cur)->next));
+        
+        return true;
     }
 
     bool remove(size_t pos) {
-        Node* cur = _head.get();
-        /* Invariant: cur is 1 node before node[pos0-pos] */
-        while (pos > 0 && cur->next) {
-            cur = cur->next.get();
+        std::unique_ptr<Node>* cur = &_head;
+        while (pos > 0 && (*cur)->next) {
+            cur = &((*cur)->next);
             pos--;
         }
-        if (pos > 0 || !cur->next) return false;
+        
+        if (pos > 0 || !(*cur)->next) return false;
 
-        cur->next = std::move(cur->next->next);
+        (*cur)->next = std::move((*cur)->next->next);
         return true;
     }
 
